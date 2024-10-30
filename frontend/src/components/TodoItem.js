@@ -1,5 +1,4 @@
 // src/components/TodoItem.js
-// Este componente muestra una tarea en la lista de tareas.
 import { format } from 'date-fns';
 
 const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
@@ -19,17 +18,17 @@ const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
     const formattedDate = format(task.date, 'dd/MM/yyyy HH:mm');
 
     return (
-        <div className="p-4 mb-4 bg-gray-100 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-start sm:items-center">
-            <div>
-                <h3 className="text-lg font-bold">{task.title}</h3>
-                <p>{task.description}</p>
-                <p className="text-sm text-gray-600">Fecha: {formattedDate}</p>
+        <div className="p-4 mb-4 bg-white rounded-lg shadow-md flex flex-col justify-between items-start space-y-4">
+            <div className="flex-1 w-full">
+                <h3 className="text-lg font-semibold text-gray-800">{task.title}</h3>
+                <p className="text-gray-600">{task.description}</p>
+                <p className="text-sm text-gray-500 mt-2">Fecha: {formattedDate}</p>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center mt-2 sm:mt-0">
+            <div className="flex flex-col items-start space-y-2 w-full">
                 <select
                     value={task.status}
                     onChange={handleStatusChange}
-                    className={`p-2 border rounded mb-2 sm:mb-0 sm:mr-2 ${statusStyles[task.status]}`}
+                    className={`w-full p-2 text-sm border rounded-lg ${statusStyles[task.status]}`}
                 >
                     <option value="Por hacer">Por hacer</option>
                     <option value="En Curso">En curso</option>
@@ -37,13 +36,13 @@ const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
                 </select>
                 <button 
                     onClick={() => startEditingTask(task)} 
-                    className="ml-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                    className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
                 >
                     Editar
                 </button>
                 <button 
                     onClick={() => deleteTask(task.id)} 
-                    className="ml-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    className="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm"
                 >
                     Eliminar
                 </button>
