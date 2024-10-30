@@ -1,7 +1,8 @@
 // Este es un contexto que maneja la autenticación de los usuarios.
-// Se encarga de guardar el token y los datos del usuario en el localStorage, y de proveer funciones para hacer login y logout.
+// Se encarga de guardar el token y los datos del usuario en las cookies, y de proveer funciones para hacer login y logout.
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 const AuthContext = createContext();
 
@@ -11,32 +12,28 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const token = localStorage.getItem('token_codeGame');
-        const user = localStorage.getItem('user_codeGame');
-        if (token && user) {
-            setToken(token);
-            setUser(JSON.parse(user));
+        const storedToken = Cookies.get('token_codeGame');
+        const storedUser = Cookies.get('user_codeGame');
+        if (storedToken && storedUser) {
+            setToken(storedToken);
+            setUser(JSON.parse(storedUser));
         }
-    }
-    , [router]);
+    }, [router]);
 
     const login = (newToken, userData) => {
-        localStorage.setItem('token_codeGame', newToken);
-        localStorage.setItem('user_codeGame', JSON.stringify(userData));
+        Cookies.set('token_codeGame', newToken, { expires: 7 }); // La cookie expira en 7 días
+        Cookies.set('user_codeGame', JSON.stringify(userData), { expires: 7 });
         setToken(newToken);
         setUser(userData);
-        router.push('/dashboard');
+        router.push('/');
     };
 
     const logout = () => {
+        Cookies.remove('token_codeGame');
+        Cookies.remove('user_codeGame');
+        setToken(null);
+        setUser(null);
         router.push('/auth/login');
-        setTimeout(() => {
-            localStorage.removeItem('token_codeGame');
-            localStorage.removeItem('user_codeGame');
-            setToken(null);
-            setUser(null);
-        });
-        
     };
 
     return (
