@@ -43,9 +43,7 @@ export default function Login() {
                 login(response.access_token, response.user);
                 // Mostrar mensaje de éxito y redirigir al dashboard
                 setAlert({ message: 'Inicio de sesión exitoso!', type: 'success' });
-                setTimeout(() => {
-                    router.push('/dashboard');
-                }, 2000);
+                router.push('/');
             } else {
                 setAlert({ message: 'Error de credenciales', type: 'error' });
             }

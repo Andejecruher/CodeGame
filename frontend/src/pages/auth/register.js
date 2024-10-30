@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { register as registerApi } from '../../utils/api';
 import Alert from '../../components/Alert';
 import { useAuth } from '../../context/AuthContext';
@@ -46,7 +45,7 @@ export default function Register() {
                 // Mostrar mensaje de éxito y redirigir al dashboard
                 setAlert({ message: 'Registro exitoso!', type: 'success' });
                 setTimeout(() => {
-                    router.push('/dashboard');
+                    router.push('/');
                 }, 2000);
             } else {
                 setAlert({ message: 'Error en el registro', type: 'error' });
