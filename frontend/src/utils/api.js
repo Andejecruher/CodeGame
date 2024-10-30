@@ -1,114 +1,62 @@
-import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+// src/api/apiService.js
+import axiosInstance from './axiosInstance';
 
-const API_URL = 'http://127.0.0.1:5000'; // Cambia a tu URL de la API
-
-const logout = () => {
-    localStorage.removeItem('token_codeGame');
-    localStorage.removeItem('user_codeGame');
-    router.push('/auth/login');
-}
-
+// Llama a la API para iniciar sesión
 export const login = async (email, password) => {
-    const response = await axios.post(`${API_URL}/login`, {
-        email,
-        password
-    }, {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }).then((res) => {
-        return res.data;
-    }).catch((error) => {
+    try {
+        const response = await axiosInstance.post('/login', { email, password });
+        return response.data;
+    } catch (error) {
         return error;
-    });
-
-
-    return response;
+    }
 };
 
+// Llama a la API para registrarse
 export const register = async (email, password) => {
-    const response = await axios.post(`${API_URL}/register`, {
-        email,
-        password
-    }, {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }).then((res) => {
-        return res.data;
-    }).catch((error) => {
+    try {
+        const response = await axiosInstance.post('/register', { email, password });
+        return response.data;
+    } catch (error) {
         return error;
-    });
-
-    return response;
-};
-
-export const getTasks = async (token) => {
-    const response = await axios.get(`${API_URL}/tasks`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then((res) => {
-        return res.data;
     }
-    ).catch((error) => {
-        if (error.response.status === 401) {
-            logout();
-        }
-        return error;
-    });
-    return response;
 };
 
-export const addTask = async (token, title, description, date) => {
-    const response = await axios.post(`${API_URL}/tasks`, {
-        title,
-        description,
-        date
-    }, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then((res) => {
-        return res.data;
+// Llama a la API para obtener las tareas
+export const getTasks = async () => {
+    try {
+        const response = await axiosInstance.get('/tasks');
+        return response.data;
+    } catch (error) {
+        return error;
     }
-    ).catch((error) => {
-        return error;
-    });
-    return response;
 };
 
-export const updateTask = async (token, taskId, title, description, status) => {
-    const response = await axios.put(`${API_URL}/tasks/${taskId}`, {
-        title,
-        description,
-        status
-    }, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then((res) => {
-        return res.data;
-    }).catch((error) => {
+// Llama a la API para agregar una tarea
+export const addTask = async (title, description, date) => {
+    try {
+        const response = await axiosInstance.post('/tasks', { title, description, date });
+        return response.data;
+    } catch (error) {
         return error;
-    });
-    return response;
+    }
 };
 
-export const deleteTask = async (token, taskId) => {
-    const response = await axios.delete(`${API_URL}/tasks/${taskId}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then((res) => {
-        return res.data;
-    }).catch((error) => {
+// Llama a la API para actualizar una tarea
+export const updateTask = async (taskId, title, description, status) => {
+    try {
+        const response = await axiosInstance.put(`/tasks/${taskId}`, { title, description, status });
+        return response.data;
+    } catch (error) {
         return error;
-    });
-    return response;
+    }
+};
+
+// Llama a la API para eliminar una tarea
+export const deleteTask = async (taskId) => {
+    try {
+        const response = await axiosInstance.delete(`/tasks/${taskId}`);
+        return response.data;
+    } catch (error) {
+        return error;
+    }
 };
