@@ -8,7 +8,7 @@ Prueba técnica para aplicación a vacante en CodeGame
 
 - Python: Descárgalo de [python.org](https://python.org).
 - MariaDB: Descárgalo desde [mariadb.org](https://mariadb.org).
-- Node.js: Descárgalo de [nodejs.org](https://nodejs.org).
+- Node.js: Descárgalo de [nodejs.org](https://nodejs.org). en su versión v21.6.1.
 - npm: Se instala automáticamente con Node.js.
 
 # Crear un entorno virtual para Python:
