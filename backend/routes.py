@@ -1,8 +1,10 @@
-from flask import request, jsonify
+import datetime
+from flask import redirect, request, jsonify
 from app import app, db
 from models import User, Task
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from passlib.context import CryptContext
+
 
 # Configuración de passlib para hashear contraseñas
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -23,12 +25,12 @@ def register():
         - Código de estado 200 si el registro es exitoso.
     """
     data = request.get_json()
-    hashed_password = pwd_context.hash(data['password'])  # Hashea la contraseña
+    hashed_password = data['password']  # Hashea la contraseña
     new_user = User(email=data['email'], password=hashed_password, id=f'U{str(db.session.query(User).count() + 1).zfill(4)}')
     db.session.add(new_user)
     db.session.commit()
     token = create_access_token(identity=new_user.id)
-    return jsonify(access_token=token), 200
+    return jsonify({"access_token": token, "user": new_user.to_dict() }), 200
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -48,9 +50,9 @@ def login():
     """
     data = request.get_json()
     user = User.query.filter_by(email=data['email']).first()
-    if user and user.check_password(data['password'], pwd_context):
+    if user and user.check_password(data['password']):
         token = create_access_token(identity=user.id)
-        return jsonify(access_token=token), 200
+        return jsonify({"access_token":token, "user": user.to_dict()}), 200
     return jsonify({"msg": "Bad email or password"}), 401
 
 @app.route('/tasks', methods=['GET'])
@@ -68,7 +70,7 @@ def get_all_tasks():
     """
     user_id = get_jwt_identity()
     tasks = Task.query.filter_by(user_id=user_id).all()
-    return jsonify([{"id": task.id, "title": task.title, "status": task.status, "user_id": task.user_id} for task in tasks]), 200
+    return jsonify([task.to_dict() for task in tasks]), 200
 
 @app.route('/tasks', methods=['POST'])
 @jwt_required()
@@ -116,9 +118,15 @@ def update_task(task_id):
     task = Task.query.filter_by(id=task_id, user_id=user_id).first()
     if not task:
         return jsonify({"msg": "Task not found"}), 404
+
+    # Actualizar solo si el estado es diferente
+    new_status = data.get('status', task.status)
+    if new_status != task.status:
+        task.date = datetime.datetime.utcnow()  # Actualizar la fecha solo si el estado cambia
+
     task.title = data.get('title', task.title)
     task.description = data.get('description', task.description)
-    task.status = data.get('status', task.status)
+    task.status = new_status
     db.session.commit()
     return jsonify({"msg": "Task updated"}), 200
 
@@ -144,16 +152,31 @@ def delete_task(task_id):
         return jsonify({"msg": "Task deleted"}), 200
     return jsonify({"msg": "Task not found"}), 404
 
-@app.route('/', methods=['GET'])
+@app.route('/version', methods=['GET'])
 def home():
     """
     Endpoint de prueba para verificar que el servidor está funcionando.
     
-    Endpoint: /
+    Endpoint: /version
     Método: GET
     
     Retorna:
         - Un mensaje de bienvenida.
         - Código de estado 200 si la solicitud es exitosa.
     """
-    return jsonify({"msg": "Hello, World !!"}), 200
+    return "Version 0.01", 200
+
+
+@app.route('/')
+def home_redirect():
+    """
+    Endpoint de prueba para verificar que el servidor está funcionando.
+    
+    Endpoint: /version
+    Método: GET
+    
+    Retorna:
+        - Un mensaje de bienvenida.
+        - Código de estado 200 si la solicitud es exitosa.
+    """
+    return redirect('/version')

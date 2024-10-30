@@ -14,6 +14,7 @@ CREATE TABLE tasks (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id VARCHAR(6),
     title VARCHAR(255) NOT NULL,
+    date DATETIME NOT NULL,
     description TEXT NOT NULL,
     status ENUM('Por hacer', 'En Curso', 'Finalizado') DEFAULT 'Por hacer',
     FOREIGN KEY (user_id) REFERENCES users(id)

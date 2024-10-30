@@ -3,9 +3,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from config import Config
+from flask_cors import CORS
 
 # Crear la aplicación Flask
 app = Flask(__name__)
+
+# Configura CORS para permitir solicitudes desde localhost:3000
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Configurar la aplicación usando la configuración del objeto Config
 app.config.from_object(Config)
