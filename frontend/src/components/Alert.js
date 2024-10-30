@@ -1,4 +1,6 @@
 // components/Alert.js
+// Este componente maneja los mensajes de alerta que se mostrarán en la aplicación.
+// Se le pasa un mensaje y un tipo, que puede ser 'success' o 'error'.
 export default function Alert({ message, type }) {
   const alertType = {
       success: 'bg-green-100 border-green-400 text-green-700',

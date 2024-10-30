@@ -5,6 +5,7 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
+    // Si se está editando una tarea, se cargan los datos en el formulario
     useEffect(() => {
         if (editingTask) {
             setTitle(editingTask.title);
@@ -12,6 +13,7 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
         }
     }, [editingTask]);
 
+    // Función para manejar el envío del formulario
     const handleSubmit = (e) => {
         e.preventDefault();
         const taskData = { title, description };

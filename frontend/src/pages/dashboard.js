@@ -1,4 +1,14 @@
 // pages/dashboard.js
+// Este componente es la página principal de la aplicación.
+// Muestra la lista de tareas y permite agregar, editar y eliminar tareas.
+// También muestra un formulario para agregar o editar tareas.
+// Se conecta al contexto de autenticación para obtener el token y los datos del usuario.
+// Se conecta a la API para obtener, agregar, editar y eliminar tareas.
+// Se conecta al componente TaskForm para mostrar el formulario de tareas.
+// Se conecta al componente TodoItem para mostrar las tareas en la lista.
+// Se conecta al componente Alert para mostrar mensajes de alerta.
+// Se conecta al componente AuthContext para obtener el contexto de autenticación.
+
 import { useAuth } from '../context/AuthContext';
 import TaskForm from '../components/TaskForm';
 import TodoItem from '../components/TodoItem';
@@ -6,14 +16,12 @@ import { useEffect, useState } from 'react';
 import { getTasks, addTask as addTaskApi, updateTask as updateTaskApi, deleteTask as deleteTaskApi } from '../utils/api';
 
 const Dashboard = () => {
-    const { user, logout, token } = useAuth();
-    const [tasks, setTasks] = useState([
-        { id: 1, title: "Tarea 1", description: "Descripción de tarea 1", status: "Por hacer", date: "2024-10-30" },
-        { id: 2, title: "Tarea 2", description: "Descripción de tarea 2", status: "En curso", date: "2024-10-31" },
-    ]);
+    const { user, logout, token } = useAuth(); // Para obtener el usuario y el token
+    const [tasks, setTasks] = useState([]); // Para almacenar las tareas
     const [editingTask, setEditingTask] = useState(null); // Para almacenar la tarea en edición
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Para mostrar un mensaje de carga
 
+    // Llamada a la API para obtener las tareas
     const fetchTasks = async () => {
         try {
             const fetchedTasks = await getTasks(token);
@@ -25,55 +33,69 @@ const Dashboard = () => {
         }
     };
 
+    // Actualizar las tareas al cargar la página
     useEffect(() => {
         fetchTasks();
     }, [token]);
 
+    // Función para agregar una tarea
     const addTask = async (newTask) => {
         try {
+            // Llamar a la API para agregar una tarea
             const addedTask = await addTaskApi(token, newTask.title, newTask.description, newTask.date);
             setTasks([...tasks, addedTask]);
+            // Actualizar la lista de tareas
             fetchTasks();
         } catch (error) {
             setError('Failed to add task');
         }
     };
 
-
+    // Función para actualizar una tarea
     const updateTask = async (id, updatedTask) => {
         try {
+            // Llamar a la API para actualizar una tarea
             const updatedTaskData = await updateTaskApi(token, id, updatedTask.title, updatedTask.description);
             setTasks(tasks.map(task => task.id === id ? updatedTaskData : task));
+            // Actualizar la lista de tareas
             fetchTasks();
         } catch (error) {
             setError('Failed to update task');
         }
     };
 
+    // Función para actualizar el estado de una tarea
     const updateTaskStatus = async (id, newStatus) => {
         try {
+            // Llamar a la API para actualizar el estado de una tarea
             const taskToUpdate = tasks.find(task => task.id === id);
             const updatedTask = await updateTaskApi(token, id, taskToUpdate.title, taskToUpdate.description, newStatus);
             setTasks(tasks.map(task => task.id === id ? updatedTask : task));
+            // Actualizar la lista de tareas
             fetchTasks();
         } catch (error) {
             setError('Failed to update task');
         }
     };
 
+    // Función para eliminar una tarea
     const deleteTask = async (id) => {
         try {
+            // Llamar a la API para eliminar una tarea
             await deleteTaskApi(token, id);
             setTasks(tasks.filter(task => task.id !== id));
+            // Actualizar la lista de tareas
             fetchTasks();
         } catch (error) {
             setError('Failed to delete task');
         }
     };
 
+    // Función para iniciar la edición de una tarea
     const startEditingTask = (task) => {
         setEditingTask(task);
     };
+    
     // Filtrar tareas por estado
     const tasksToDo = tasks.length > 0 ? tasks.filter(task => task.status === "Por hacer") : [];
     const tasksInProgress = tasks.length > 0 ? tasks.filter(task => task.status === "En Curso") : [];

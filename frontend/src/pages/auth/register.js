@@ -13,19 +13,23 @@ export default function Register() {
     const { login } = useAuth();
     const router = useRouter();
 
+    // Función para validar un correo electrónico
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     };
 
+    // Función para manejar el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Validar que se ingresen correo y contraseña
         if (!email || !password) {
             setAlert({ message: 'Correo y contraseña requeridos', type: 'error' });
             return;
         }
 
+        // Validar que el correo sea válido
         if (!validateEmail(email)) {
             setAlert({ message: 'Correo no valido', type: 'error' });
             return;
@@ -34,10 +38,12 @@ export default function Register() {
         setLoading(true);
 
         try {
+            // Llamar a la API para registrar un usuario
             const response = await registerApi(email, password);
             if (response.access_token) {
                 // Guardar token y datos del usuario en el contexto
                 login(response.access_token, response.user);
+                // Mostrar mensaje de éxito y redirigir al dashboard
                 setAlert({ message: 'Registro exitoso!', type: 'success' });
                 setTimeout(() => {
                     router.push('/dashboard');

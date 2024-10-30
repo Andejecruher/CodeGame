@@ -123,14 +123,47 @@ npm run dev
 El proyecto se divide en dos carpetas principales: backend y frontend. La estructura de carpetas es la siguiente:
 
 ```
-└── 📁CodeGame
-    └── 📁backend
-        └── 📁app
-            └── 📁auth
-            └── 📁items
-            └── config.py
-        └── main.py
-        └── test.py
-    └── 📁frontend
-    └── README.md
+CodeGame/
+├── backend/
+│   ├── app.py
+│   ├── config.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── db.sql
+│   ├── __init__.py
+│   └── todo_env/
+│       ├── bin/
+│       ├── include/
+│       ├── lib/
+│       ├── lib64 -> lib
+│       ├── pyvenv.cfg
+│       └── share/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Alert.js
+│   │   │   ├── TaskForm.js
+│   │   │   └── TodoItem.js
+│   │   ├── context/
+│   │   │   └── AuthContext.js
+│   │   ├── pages/
+|   |   |   ├── auth
+│   │   │   │   ├── Login.js
+│   │   │   │   └── Register.js
+│   │   │   └── _app.js
+│   │   │   ├── dashboard.js
+│   │   │   ├── styles
+│   │   │   │   ├── Auth.module.css
+│   │   │   │   ├── globals.css
+│   │   └── utils/
+│   │       └── api.js
+│   ├── public/
+│   ├── styles/
+│   ├── .env.local
+│   ├── .gitignore
+│   ├── next.config.js
+│   ├── package.json
+│   └── yarn.lock
+├── .gitignore
+└── README.md
 ```

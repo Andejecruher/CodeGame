@@ -1,6 +1,6 @@
+// Esta página permite a los usuarios iniciar sesión en la aplicación.
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { login as loginApi } from '../../utils/api';
 import Alert from '../../components/Alert';
 import { useAuth } from '../../context/AuthContext';
@@ -13,11 +13,13 @@ export default function Login() {
     const { login } = useAuth();
     const router = useRouter();
 
+    // Función para validar un correo electrónico
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     };
 
+    // Función para manejar el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -34,10 +36,12 @@ export default function Login() {
         setLoading(true);
 
         try {
+            // Llamar a la API para iniciar sesión
             const response = await loginApi(email, password);
             if (response.access_token) {
                 // Guardar token y datos del usuario en el contexto
                 login(response.access_token, response.user);
+                // Mostrar mensaje de éxito y redirigir al dashboard
                 setAlert({ message: 'Inicio de sesión exitoso!', type: 'success' });
                 setTimeout(() => {
                     router.push('/dashboard');

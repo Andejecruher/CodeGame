@@ -1,7 +1,9 @@
 // src/components/TodoItem.js
+// Este componente muestra una tarea en la lista de tareas.
 import { format } from 'date-fns';
 
 const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
+    // Manejar el cambio de estado de la tarea
     const handleStatusChange = (e) => {
         updateTaskStatus(task.id, e.target.value);
     };
@@ -13,6 +15,7 @@ const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
         "Finalizado": "bg-green-100 text-green-700",
     };
 
+    // Formatear la fecha
     const formattedDate = format(task.date, 'dd/MM/yyyy HH:mm');
 
     return (

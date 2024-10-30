@@ -1,3 +1,5 @@
+// Este es un contexto que maneja la autenticación de los usuarios.
+// Se encarga de guardar el token y los datos del usuario en el localStorage, y de proveer funciones para hacer login y logout.
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
