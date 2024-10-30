@@ -1,0 +1,37 @@
+# .gitignore
+
+# Ignorar archivos y carpetas de Python en la carpeta backend
+/backend/__pycache__/
+/backend/*.py[cod]
+/backend/todo_env/
+/backend/todo_env/
+/backend/.env
+/backend/.todo_env
+/backend/instance/
+/backend/.pytest_cache/
+/backend/.mypy_cache/
+/backend/.coverage
+/backend/coverage/
+/backend/*.log
+/backend/.idea/
+/backend/.vscode/
+/backend/.DS_Store
+
+# Ignorar archivos y carpetas de Next.js en la carpeta frontend
+/frontend/node_modules/
+/frontend/.next/
+/frontend/out/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/.idea/
+/frontend/.vscode/
+/frontend/.DS_Store
+
+# Ignorar archivos y carpetas generales
+*.swp
+*.swo
