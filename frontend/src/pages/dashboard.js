@@ -33,6 +33,13 @@ const Dashboard = () => {
         }
     };
 
+    // Si el usuario no está autenticado, redirigir a la página de inicio
+    useEffect(() => {
+        if (!user) {
+            window.location.href = '/auth/login';
+        }
+    }, [user]);
+
     // Actualizar las tareas al cargar la página
     useEffect(() => {
         fetchTasks();
