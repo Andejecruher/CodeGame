@@ -1,4 +1,4 @@
-// pages/dashboard.js
+// src/pages/index.jsd
 // Este componente es la página principal de la aplicación.
 // Muestra la lista de tareas y permite agregar, editar y eliminar tareas.
 // También muestra un formulario para agregar o editar tareas.
@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 import { getTasks, addTask as addTaskApi, updateTask as updateTaskApi, deleteTask as deleteTaskApi } from '../utils/api';
 
 const Dashboard = () => {
-    const { user, logout, token } = useAuth(); // Para obtener el usuario y el token
+    const { user, logout } = useAuth(); // Para obtener el usuario y el token
     const [tasks, setTasks] = useState([]); // Para almacenar las tareas
     const [editingTask, setEditingTask] = useState(null); // Para almacenar la tarea en edición
     const [loading, setLoading] = useState(true); // Para mostrar un mensaje de carga
@@ -24,7 +24,7 @@ const Dashboard = () => {
     // Llamada a la API para obtener las tareas
     const fetchTasks = async () => {
         try {
-            const fetchedTasks = await getTasks(token);
+            const fetchedTasks = await getTasks();
             setTasks(fetchedTasks);
         } catch (error) {
             setError('Failed to fetch tasks');
@@ -33,23 +33,11 @@ const Dashboard = () => {
         }
     };
 
-    // Si el usuario no está autenticado, redirigir a la página de inicio
-    useEffect(() => {
-        if (!user) {
-            window.location.href = '/auth/login';
-        }
-    }, [user]);
-
-    // Actualizar las tareas al cargar la página
-    useEffect(() => {
-        fetchTasks();
-    }, [token]);
-
     // Función para agregar una tarea
     const addTask = async (newTask) => {
         try {
             // Llamar a la API para agregar una tarea
-            const addedTask = await addTaskApi(token, newTask.title, newTask.description, newTask.date);
+            const addedTask = await addTaskApi(newTask.title, newTask.description, newTask.date);
             setTasks([...tasks, addedTask]);
             // Actualizar la lista de tareas
             fetchTasks();
@@ -62,7 +50,7 @@ const Dashboard = () => {
     const updateTask = async (id, updatedTask) => {
         try {
             // Llamar a la API para actualizar una tarea
-            const updatedTaskData = await updateTaskApi(token, id, updatedTask.title, updatedTask.description);
+            const updatedTaskData = await updateTaskApi(id, updatedTask.title, updatedTask.description);
             setTasks(tasks.map(task => task.id === id ? updatedTaskData : task));
             // Actualizar la lista de tareas
             fetchTasks();
@@ -76,7 +64,7 @@ const Dashboard = () => {
         try {
             // Llamar a la API para actualizar el estado de una tarea
             const taskToUpdate = tasks.find(task => task.id === id);
-            const updatedTask = await updateTaskApi(token, id, taskToUpdate.title, taskToUpdate.description, newStatus);
+            const updatedTask = await updateTaskApi(id, taskToUpdate.title, taskToUpdate.description, newStatus);
             setTasks(tasks.map(task => task.id === id ? updatedTask : task));
             // Actualizar la lista de tareas
             fetchTasks();
@@ -89,7 +77,7 @@ const Dashboard = () => {
     const deleteTask = async (id) => {
         try {
             // Llamar a la API para eliminar una tarea
-            await deleteTaskApi(token, id);
+            await deleteTaskApi(id);
             setTasks(tasks.filter(task => task.id !== id));
             // Actualizar la lista de tareas
             fetchTasks();
@@ -102,11 +90,16 @@ const Dashboard = () => {
     const startEditingTask = (task) => {
         setEditingTask(task);
     };
-    
+
     // Filtrar tareas por estado
     const tasksToDo = tasks.length > 0 ? tasks.filter(task => task.status === "Por hacer") : [];
     const tasksInProgress = tasks.length > 0 ? tasks.filter(task => task.status === "En Curso") : [];
     const tasksDone = tasks.length > 0 ? tasks.filter(task => task.status === "Finalizado") : [];
+
+    // Actualizar las tareas al cargar la página
+    useEffect(() => {
+        fetchTasks();
+    }, [user]);
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col items-center">
@@ -124,13 +117,8 @@ const Dashboard = () => {
                     <h1 className="text-4xl font-bold text-blue-600">CodeGame Task</h1>
                 </div>
 
-                {/* Formulario de creación */}
-                {editingTask === null && <TaskForm addTask={addTask} updateTask={updateTask} editingTask={editingTask} setEditingTask={setEditingTask} />}
-
-                {/* Formulario de edición */}
-                {editingTask && (
-                    <TaskForm addTask={addTask} updateTask={updateTask} editingTask={editingTask} setEditingTask={setEditingTask} />
-                )}
+                {/* Formulario */}
+                <TaskForm addTask={addTask} updateTask={updateTask} editingTask={editingTask} setEditingTask={setEditingTask} />
 
                 <h2 className="text-2xl font-semibold mb-4">Lista de Tareas</h2>
 
@@ -139,6 +127,7 @@ const Dashboard = () => {
                 ) : (
                     tasks.length === 0 ? <p>No hay tareas</p> : null
                 )}
+
                 {/* Sección de tareas "Por hacer" */}
                 <section className="mb-6">
                     <h3 className="text-lg font-semibold mb-2">Por hacer</h3>
