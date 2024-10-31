@@ -10,7 +10,6 @@ class User(db.Model):
     """
     Modelo de usuario para la base de datos.
     """
-
     __tablename__ = "users"
     id = db.Column(db.String(6), primary_key=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
@@ -50,7 +49,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(6), db.ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
     description = db.Column(db.Text, nullable=False)
     status = db.Column(db.Enum("Por hacer", "En Curso", "Finalizado"), default="Por hacer")
 
@@ -68,7 +67,7 @@ class Task(db.Model):
         self.title = title
         self.description = description
         self.status = status
-        self.date = date if date else datetime.datetime.utcnow()
+        self.date = date if date else datetime.datetime.now()
 
     def to_dict(self):
         """

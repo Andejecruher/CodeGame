@@ -1,9 +1,9 @@
 # Importar las librerías necesarias
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import JWTManager
-from config import Config
-from flask_cors import CORS
+from flask import Flask # Framework para crear aplicaciones web
+from flask_sqlalchemy import SQLAlchemy # ORM Para las consultas a la base de datos
+from flask_jwt_extended import JWTManager # JWT para autenticación
+from config import Config # Configuración de la aplicación
+from flask_cors import CORS # Configurar CORS para permitir solicitudes desde localhost:3000
 
 # Crear la aplicación Flask
 app = Flask(__name__)

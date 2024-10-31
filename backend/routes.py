@@ -122,7 +122,7 @@ def update_task(task_id):
     # Actualizar solo si el estado es diferente
     new_status = data.get('status', task.status)
     if new_status != task.status:
-        task.date = datetime.datetime.utcnow()  # Actualizar la fecha solo si el estado cambia
+        task.date = datetime.datetime.now()  # Actualizar la fecha solo si el estado cambia
 
     task.title = data.get('title', task.title)
     task.description = data.get('description', task.description)
