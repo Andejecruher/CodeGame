@@ -15,7 +15,7 @@ const TodoItem = ({ task, updateTaskStatus, deleteTask, startEditingTask }) => {
     };
 
     // Formatear la fecha
-    const formattedDate = format(task.date, 'dd/MM/yyyy HH:mm');
+    const formattedDate = format(task.date, 'dd/MM/yyyy hh:mm');
 
     return (
         <div className="p-4 mb-4 bg-white rounded-lg shadow-md flex flex-col justify-between items-start space-y-4">

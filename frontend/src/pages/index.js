@@ -67,9 +67,9 @@ const Dashboard = () => {
         setEditingTask(task);
     };
 
-    const tasksToDo = tasks.filter(task => task.status === "Por hacer");
-    const tasksInProgress = tasks.filter(task => task.status === "En Curso");
-    const tasksDone = tasks.filter(task => task.status === "Finalizado");
+    const tasksToDo = tasks ? tasks.filter(task => task.status === "Por hacer") : [];
+    const tasksInProgress = tasks ? tasks.filter(task => task.status === "En curso") : [];
+    const tasksDone = tasks ? tasks.filter(task => task.status === "Finalizado") : [];
 
     useEffect(() => {
         if(user){
