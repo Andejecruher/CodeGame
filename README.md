@@ -108,19 +108,15 @@ El proyecto se divide en dos carpetas principales: backend y frontend. La estruc
 ```
 CodeGame/
 ├── backend/
-│   ├── app.py
-│   ├── config.py
-│   ├── models.py
-│   ├── routes.py
-│   ├── db.sql
 │   ├── __init__.py
-│   └── todo_env/
-│       ├── bin/
-│       ├── include/
-│       ├── lib/
-│       ├── lib64 -> lib
-│       ├── pyvenv.cfg
-│       └── share/
+│   ├── config.py
+│   ├── extensions.py
+│   ├── test/
+│   └── app/
+│       ├── models/
+│       ├── routes/
+│       ├── schemas/
+│       ├── services
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
