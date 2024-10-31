@@ -4,5 +4,7 @@ Flask-SQLAlchemy
 pymysql
 passlib
 flask-cors
+flask-swagger
+flask-swagger-ui
 python-dotenv
 gunicorn

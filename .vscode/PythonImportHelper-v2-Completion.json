@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "CryptContext",
         "importPath": "passlib.context",
         "description": "passlib.context",
@@ -73,6 +81,30 @@
         "documentation": {}
     },
     {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "current_app",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "request",
         "importPath": "flask",
         "description": "flask",
@@ -134,6 +166,14 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "swagger",
+        "importPath": "flask_swagger",
+        "description": "flask_swagger",
+        "isExtraImport": true,
+        "detail": "flask_swagger",
         "documentation": {}
     },
     {
@@ -318,11 +358,29 @@
         "documentation": {}
     },
     {
+        "label": "swagger_spec",
+        "kind": 2,
+        "importPath": "backend.app.routes.swagger_routes",
+        "description": "backend.app.routes.swagger_routes",
+        "peekOfCode": "def swagger_spec():\n    # Usar la aplicación Flask actual\n    \"\"\"\n    Genera el esquema Swagger para las rutas definidas.\n    Endpoint: /swagger\n    Método: GET\n    Retorna:\n        - El esquema Swagger en formato JSON.\n    \"\"\"\n    return jsonify(swagger(current_app))  # Pasar la instancia de la aplicación Flask",
+        "detail": "backend.app.routes.swagger_routes",
+        "documentation": {}
+    },
+    {
+        "label": "swagger_routes",
+        "kind": 5,
+        "importPath": "backend.app.routes.swagger_routes",
+        "description": "backend.app.routes.swagger_routes",
+        "peekOfCode": "swagger_routes = Blueprint(\"swagger\", __name__)\n@swagger_routes.route(\"/swagger\", methods=[\"GET\"])\ndef swagger_spec():\n    # Usar la aplicación Flask actual\n    \"\"\"\n    Genera el esquema Swagger para las rutas definidas.\n    Endpoint: /swagger\n    Método: GET\n    Retorna:\n        - El esquema Swagger en formato JSON.",
+        "detail": "backend.app.routes.swagger_routes",
+        "documentation": {}
+    },
+    {
         "label": "list_tasks",
         "kind": 2,
         "importPath": "backend.app.routes.task_routes",
         "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    Retorna:\n        - Una lista de tareas del usuario autenticado.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    user_id = get_jwt_identity()",
+        "peekOfCode": "def list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    ---\n    tags:\n      - Tareas\n    parameters:\n      - name: Authorization",
         "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
@@ -331,7 +389,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.task_routes",
         "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def add_task():\n    \"\"\"\n    Agrega una nueva tarea para el usuario autenticado.\n    Endpoint: /tasks\n    Método: POST\n    Datos de entrada (JSON):\n        - title: Título de la tarea.\n        - description: Descripción de la tarea.\n    Retorna:\n        - Un mensaje de confirmación.",
+        "peekOfCode": "def add_task():\n    \"\"\"\n    Agrega una nueva tarea para el usuario autenticado.\n    Endpoint: /tasks\n    Método: POST\n    Datos de entrada (JSON):\n        - title: Título de la tarea.\n        - description: Descripción de la tarea.\n    ---\n    tags:",
         "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
@@ -340,7 +398,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.task_routes",
         "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def edit_task(task_id):\n    \"\"\"\n    Actualiza una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: PUT\n    Datos de entrada (JSON):\n        - title: Nuevo título de la tarea (opcional).\n        - description: Nueva descripción de la tarea (opcional).\n        - status: Nuevo estado de la tarea (opcional).\n    Retorna:",
+        "peekOfCode": "def edit_task(task_id):\n    \"\"\"\n    Actualiza una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: PUT\n    Datos de entrada (JSON):\n        - title: Nuevo título de la tarea (opcional).\n        - description: Nueva descripción de la tarea (opcional).\n        - status: Nuevo estado de la tarea (opcional).\n    ---",
         "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
@@ -349,25 +407,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.task_routes",
         "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def remove_task(task_id):\n    \"\"\"\n    Elimina una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: DELETE\n    Retorna:\n        - Un mensaje de confirmación.\n        - Código de estado 200 si la tarea se elimina exitosamente.\n        - Código de estado 404 si la tarea no se encuentra.\n    \"\"\"",
-        "detail": "backend.app.routes.task_routes",
-        "documentation": {}
-    },
-    {
-        "label": "home",
-        "kind": 2,
-        "importPath": "backend.app.routes.task_routes",
-        "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return \"Version 0.01\", 200",
-        "detail": "backend.app.routes.task_routes",
-        "documentation": {}
-    },
-    {
-        "label": "home_redirect",
-        "kind": 2,
-        "importPath": "backend.app.routes.task_routes",
-        "description": "backend.app.routes.task_routes",
-        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return redirect(\"/version\")",
+        "peekOfCode": "def remove_task(task_id):\n    \"\"\"\n    Elimina una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: DELETE\n    ---\n    tags:\n      - Tareas\n    parameters:\n      - name: Authorization",
         "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
@@ -376,7 +416,7 @@
         "kind": 5,
         "importPath": "backend.app.routes.task_routes",
         "description": "backend.app.routes.task_routes",
-        "peekOfCode": "task_routes = Blueprint(\"tasks\", __name__)\n@task_routes.route(\"/tasks\", methods=[\"GET\"])\n@jwt_required()\ndef list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    Retorna:\n        - Una lista de tareas del usuario autenticado.",
+        "peekOfCode": "task_routes = Blueprint(\"tasks\", __name__)\n@task_routes.route(\"/tasks\", methods=[\"GET\"])\n@jwt_required()\ndef list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    ---\n    tags:",
         "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
@@ -385,7 +425,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.user_routes",
         "description": "backend.app.routes.user_routes",
-        "peekOfCode": "def register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si el registro es exitoso.",
+        "peekOfCode": "def register():\n    \"\"\"\n    Endpoint para crear usuario.\n    ---\n    tags:\n      - Autenticación\n    parameters:\n      - name: body\n        in: body\n        required: true",
         "detail": "backend.app.routes.user_routes",
         "documentation": {}
     },
@@ -394,7 +434,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.user_routes",
         "description": "backend.app.routes.user_routes",
-        "peekOfCode": "def login():\n    \"\"\"\n    Inicia sesión de un usuario.\n    Endpoint: /login\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si las credenciales son correctas.",
+        "peekOfCode": "def login():\n    \"\"\"\n    Endpoint para iniciar sesión.\n    ---\n    tags:\n      - Autenticación\n    parameters:\n      - name: body\n        in: body\n        required: true",
         "detail": "backend.app.routes.user_routes",
         "documentation": {}
     },
@@ -403,7 +443,7 @@
         "kind": 5,
         "importPath": "backend.app.routes.user_routes",
         "description": "backend.app.routes.user_routes",
-        "peekOfCode": "user_routes = Blueprint(\"users\", __name__)\n@user_routes.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.",
+        "peekOfCode": "user_routes = Blueprint(\"users\", __name__)\n@user_routes.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"\n    Endpoint para crear usuario.\n    ---\n    tags:\n      - Autenticación\n    parameters:\n      - name: body",
         "detail": "backend.app.routes.user_routes",
         "documentation": {}
     },
@@ -412,7 +452,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.version_routes",
         "description": "backend.app.routes.version_routes",
-        "peekOfCode": "def home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return \"Version 0.01\", 200",
+        "peekOfCode": "def home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    ---\n    tags:\n      - Versión\n    responses:\n      200:",
         "detail": "backend.app.routes.version_routes",
         "documentation": {}
     },
@@ -421,7 +461,7 @@
         "kind": 2,
         "importPath": "backend.app.routes.version_routes",
         "description": "backend.app.routes.version_routes",
-        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return redirect(\"/version\")",
+        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Redirige a la versión de la API.\n    Endpoint: /\n    Método: GET\n    \"\"\"\n    return redirect(\"/version\")",
         "detail": "backend.app.routes.version_routes",
         "documentation": {}
     },
@@ -430,7 +470,7 @@
         "kind": 5,
         "importPath": "backend.app.routes.version_routes",
         "description": "backend.app.routes.version_routes",
-        "peekOfCode": "version_routes = Blueprint(\"version\", __name__)\n@version_routes.route(\"/version\", methods=[\"GET\"])\ndef home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.",
+        "peekOfCode": "version_routes = Blueprint(\"version\", __name__)\n@version_routes.route(\"/version\", methods=[\"GET\"])\ndef home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    ---\n    tags:\n      - Versión",
         "detail": "backend.app.routes.version_routes",
         "documentation": {}
     },

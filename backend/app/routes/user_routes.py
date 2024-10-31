@@ -7,17 +7,55 @@ user_routes = Blueprint("users", __name__)
 @user_routes.route("/register", methods=["POST"])
 def register():
     """
-    Registra un nuevo usuario.
-
-    Endpoint: /register
-    Método: POST
-    Datos de entrada (JSON):
-        - email: Dirección de correo electrónico del usuario.
-        - password: Contraseña del usuario.
-
-    Retorna:
-        - Un token de acceso JWT si el registro es exitoso.
-        - Código de estado 200 si el registro es exitoso.
+    Endpoint para crear usuario.
+    
+    ---
+    tags:
+      - Autenticación
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              example: "test@gmail.com"
+              description: Nombre de usuario del usuario que intenta iniciar sesión.
+            password:
+              type: string
+              example: "secret"
+              description: Contraseña del usuario que intenta iniciar sesión.
+    responses:
+      200:
+        description: Respuesta exitosa con token de autenticación.
+        schema:
+          type: object
+          properties:
+            token:
+              type: string
+              example: "123abc"
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                username:
+                  type: string
+                  example: "user1"
+                email:
+                  type: string
+                  example: "example@gmail.com"
+      401:
+        description: Credenciales incorrectas.
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Credenciales inválidas"
     """
     data = request.get_json()
     return create_user(data)
@@ -26,18 +64,55 @@ def register():
 @user_routes.route("/login", methods=["POST"])
 def login():
     """
-    Inicia sesión de un usuario.
-
-    Endpoint: /login
-    Método: POST
-    Datos de entrada (JSON):
-        - email: Dirección de correo electrónico del usuario.
-        - password: Contraseña del usuario.
-
-    Retorna:
-        - Un token de acceso JWT si las credenciales son correctas.
-        - Código de estado 200 si el inicio de sesión es exitoso.
-        - Código de estado 401 si las credenciales son incorrectas.
+    Endpoint para iniciar sesión.
+    
+    ---
+    tags:
+      - Autenticación
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              example: "test@gmail.com"
+              description: Nombre de usuario del usuario que intenta iniciar sesión.
+            password:
+              type: string
+              example: "secret"
+              description: Contraseña del usuario que intenta iniciar sesión.
+    responses:
+      200:
+        description: Respuesta exitosa con token de autenticación.
+        schema:
+          type: object
+          properties:
+            token:
+              type: string
+              example: "123abc"
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                username:
+                  type: string
+                  example: "user1"
+                email:
+                  type: string
+                  example: "example@gmail.com"
+      401:
+        description: Credenciales incorrectas.
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Credenciales inválidas"
     """
     data = request.get_json()
     return access_user(data)

@@ -1,14 +1,11 @@
 # Importar las librerías necesarias
-from flask import Flask  # Framework para crear aplicaciones web
+from flask import Flask, jsonify  # Framework para crear aplicaciones web
 from flask_cors import (
     CORS,
 )  # Configurar CORS para permitir solicitudes desde localhost:3000
+from flask_swagger_ui import get_swaggerui_blueprint # Importar Swagger UI
 from app.config import Config  # Configuración de la aplicación
-from app.routes import (
-    task_routes,
-    user_routes,
-    version_routes,
-)  # Importar las rutas de la aplicación
+from app.routes import register_blueprints  # Importar las rutas de la aplicación
 from app.extensions import db, jwt  # Importar las extensiones de la aplicación
 
 
@@ -33,8 +30,16 @@ def create_app():
         # Manejar errores de inicialización de JWT
         print(f"Error al inicializar JWT: {e}")
     # Registrar las rutas de la aplicación
-    app.register_blueprint(task_routes)
-    app.register_blueprint(user_routes)
-    app.register_blueprint(version_routes)
+    register_blueprints(app)
+    # Configuración de Swagger UI
+    SWAGGER_URL = '/swagger-ui'
+    API_URL = '/swagger'
+    swaggerui_blueprint = get_swaggerui_blueprint(
+        SWAGGER_URL, API_URL,
+        config={'app_name': "Documentacion de la API"}
+    )    
+
+    # Registrar el Blueprint de Swagger UI
+    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
     return app

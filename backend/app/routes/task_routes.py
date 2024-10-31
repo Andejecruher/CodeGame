@@ -14,9 +14,35 @@ def list_tasks():
     Endpoint: /tasks
     Método: GET
 
-    Retorna:
-        - Una lista de tareas del usuario autenticado.
-        - Código de estado 200 si la solicitud es exitosa.
+    ---
+    tags:
+      - Tareas
+    parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: "Token de autenticación (Bearer <token>)"
+    responses:
+      200:
+        description: Lista de tareas del usuario autenticado.
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              title:
+                type: string
+                example: "Tarea de ejemplo"
+              description:
+                type: string
+                example: "Descripción de la tarea"
+              status:
+                type: string
+                example: "pendiente"
     """
     user_id = get_jwt_identity()
     tasks = get_tasks(user_id)
@@ -35,9 +61,38 @@ def add_task():
         - title: Título de la tarea.
         - description: Descripción de la tarea.
 
-    Retorna:
-        - Un mensaje de confirmación.
-        - Código de estado 201 si la tarea se agrega exitosamente.
+    ---
+    tags:
+      - Tareas
+    parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: "Token de autenticación (Bearer <token>)"
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              example: "Nueva tarea"
+              description: "Título de la tarea"
+            description:
+              type: string
+              example: "Descripción de la nueva tarea"
+              description: "Descripción de la tarea"
+    responses:
+      201:
+        description: Tarea agregada exitosamente.
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Tarea creada con éxito"
     """
     user_id = get_jwt_identity()
     data = request.get_json()
@@ -57,10 +112,52 @@ def edit_task(task_id):
         - description: Nueva descripción de la tarea (opcional).
         - status: Nuevo estado de la tarea (opcional).
 
-    Retorna:
-        - Un mensaje de confirmación.
-        - Código de estado 200 si la tarea se actualiza exitosamente.
-        - Código de estado 404 si la tarea no se encuentra.
+    ---
+    tags:
+      - Tareas
+    parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: "Token de autenticación (Bearer <token>)"
+      - name: task_id
+        in: path
+        required: true
+        type: integer
+        description: ID de la tarea a actualizar.
+      - name: body
+        in: body
+        required: false
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              example: "Título actualizado"
+            description:
+              type: string
+              example: "Descripción actualizada"
+            status:
+              type: string
+              example: "Por hacer"
+    responses:
+      200:
+        description: Tarea actualizada exitosamente.
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Tarea actualizada con éxito"
+      404:
+        description: Tarea no encontrada.
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Tarea no encontrada"
     """
     user_id = get_jwt_identity()
     data = request.get_json()
@@ -76,40 +173,37 @@ def remove_task(task_id):
     Endpoint: /tasks/<int:task_id>
     Método: DELETE
 
-    Retorna:
-        - Un mensaje de confirmación.
-        - Código de estado 200 si la tarea se elimina exitosamente.
-        - Código de estado 404 si la tarea no se encuentra.
+    ---
+    tags:
+      - Tareas
+    parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: "Token de autenticación (Bearer <token>)"
+      - name: task_id
+        in: path
+        required: true
+        type: integer
+        description: ID de la tarea a eliminar.
+    responses:
+      200:
+        description: Tarea eliminada exitosamente.
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Tarea eliminada con éxito"
+      404:
+        description: Tarea no encontrada.
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Tarea no encontrada"
     """
     user_id = get_jwt_identity()
     return delete_task(user_id, task_id)
-
-
-@task_routes.route("/version", methods=["GET"])
-def home():
-    """
-    Endpoint de prueba para verificar que el servidor está funcionando.
-
-    Endpoint: /version
-    Método: GET
-
-    Retorna:
-        - Un mensaje de bienvenida.
-        - Código de estado 200 si la solicitud es exitosa.
-    """
-    return "Version 0.01", 200
-
-
-@task_routes.route("/")
-def home_redirect():
-    """
-    Endpoint de prueba para verificar que el servidor está funcionando.
-
-    Endpoint: /version
-    Método: GET
-
-    Retorna:
-        - Un mensaje de bienvenida.
-        - Código de estado 200 si la solicitud es exitosa.
-    """
-    return redirect("/version")
