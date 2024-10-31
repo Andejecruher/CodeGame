@@ -15,6 +15,20 @@ Prueba técnica para aplicación a vacante en CodeGame
 
 Abre una terminal o línea de comandos y navega a la carpeta donde quieres crear el proyecto.
 
+Has un clon del repositorio con el siguiente comando:
+
+```bash
+git clone https://github.com/Andejecruher/CodeGame.git
+```
+Accede a la carpeta del proyecto:
+
+```bash
+cd CodeGame
+```
+
+Luego sigue los pasos necesarios para levantar tanto el servicio de backend como el de frontend.
+
+
 Primero accede a la carpeta del backend:
 
 ```bash
@@ -39,7 +53,7 @@ Activa el entorno virtual:
 
 #Instalar dependencias de Python:
 
-- Instalar Flask y Flask-JWT-Extended para el backend con pip install Flask Flask-JWT-Extended Flask-SQLAlchemy.
+- Instalar Flask y Flask-JWT-Extended para el backend con pip install Flask Flask-JWT-Extended Flask-SQLAlchemy pymysql passlib flask-cors
 
 ```bash
 pip install Flask Flask-JWT-Extended Flask-SQLAlchemy pymysql passlib flask-cors
@@ -77,7 +91,7 @@ pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:8000 app:app --reload
 ```
 
-- Recuerda correr los comandos dentro de la carpeta backend para que funcione correctamente.
+- Recuerda correr los comandos dentro de la carpeta backend a la altura de el archivo app.py para que funcione correctamente.
 
 # Documentacion oficial:
 
@@ -94,11 +108,11 @@ gunicorn -w 4 -b 0.0.0.0:8000 app:app --reload
 
 ## Requerimientos previos para Frontend
 
-- Instala Node.js y npm:
+- Instala Node.js y npm en su version v21.6.1.
 
-# Correr el servidor de desarrollo en el frontend:
+# Correr el servidor de desarrollo para el frontend:
 
-- Abre una terminal o línea de comandos y navega a la carpeta del frontend:
+- Dentro de la carpeta del proyecto, accede a la carpeta frontend:
 
 ```bash 
 cd frontend
