@@ -33,7 +33,7 @@ def create_app():
     register_blueprints(app)
     # Configuración de Swagger UI
     SWAGGER_URL = '/swagger-ui'
-    API_URL = '/swagger'
+    API_URL = '/static/swagger.json'
     swaggerui_blueprint = get_swaggerui_blueprint(
         SWAGGER_URL, API_URL,
         config={'app_name': "Documentacion de la API"}

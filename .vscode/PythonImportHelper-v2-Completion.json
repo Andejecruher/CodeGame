@@ -169,6 +169,14 @@
         "documentation": {}
     },
     {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "swagger",
         "importPath": "flask_swagger",
         "description": "flask_swagger",

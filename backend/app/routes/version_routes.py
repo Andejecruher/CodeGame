@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect
+from flask import Blueprint, redirect, jsonify
 
 version_routes = Blueprint("version", __name__)
 
@@ -22,9 +22,9 @@ def home():
           properties:
             message:
               type: string
-              example: "Version 0.01"
+              example: "Version 1.0.0"
     """
-    return "Version 0.01", 200
+    return jsonify(version="1.0.0"), 200
 
 
 @version_routes.route("/", methods=["GET"])

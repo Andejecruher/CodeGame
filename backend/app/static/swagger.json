@@ -1,0 +1,344 @@
+{
+  "definitions": {},
+  "info": { "title": "CodeGame Api Task", "version": "1.0.0" },
+  "paths": {
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "email": {
+                  "description": "Nombre de usuario del usuario que intenta iniciar sesi\u00f3n.",
+                  "example": "test@gmail.com",
+                  "type": "string"
+                },
+                "password": {
+                  "description": "Contrase\u00f1a del usuario que intenta iniciar sesi\u00f3n.",
+                  "example": "secret",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa con token de autenticaci\u00f3n.",
+            "schema": {
+              "properties": {
+                "token": { "example": "123abc", "type": "string" },
+                "user": {
+                  "properties": {
+                    "email": {
+                      "example": "example@gmail.com",
+                      "type": "string"
+                    },
+                    "id": { "example": 1, "type": "integer" },
+                    "username": { "example": "user1", "type": "string" }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Credenciales incorrectas.",
+            "schema": {
+              "properties": {
+                "error": {
+                  "example": "Credenciales inv\u00e1lidas",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Endpoint para iniciar sesi\u00f3n.",
+        "tags": ["Autenticaci\u00f3n"]
+      }
+    },
+    "/register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "email": {
+                  "description": "Nombre de usuario del usuario que intenta iniciar sesi\u00f3n.",
+                  "example": "test@gmail.com",
+                  "type": "string"
+                },
+                "password": {
+                  "description": "Contrase\u00f1a del usuario que intenta iniciar sesi\u00f3n.",
+                  "example": "secret",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa con token de autenticaci\u00f3n.",
+            "schema": {
+              "properties": {
+                "token": { "example": "123abc", "type": "string" },
+                "user": {
+                  "properties": {
+                    "email": {
+                      "example": "example@gmail.com",
+                      "type": "string"
+                    },
+                    "id": { "example": 1, "type": "integer" },
+                    "username": { "example": "user1", "type": "string" }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Credenciales incorrectas.",
+            "schema": {
+              "properties": {
+                "error": {
+                  "example": "Credenciales inv\u00e1lidas",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Endpoint para crear usuario.",
+        "tags": ["Autenticaci\u00f3n"]
+      }
+    },
+    "/tasks": {
+      "get": {
+        "description": "<br/>Endpoint: /tasks<br/>M\u00e9todo: GET<br/>",
+        "parameters": [
+          {
+            "description": "Token de autenticaci\u00f3n (Bearer <token>)",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tareas del usuario autenticado.",
+            "schema": {
+              "items": {
+                "properties": {
+                  "description": {
+                    "example": "Descripci\u00f3n de la tarea",
+                    "type": "string"
+                  },
+                  "id": { "example": 1, "type": "integer" },
+                  "status": { "example": "pendiente", "type": "string" },
+                  "title": { "example": "Tarea de ejemplo", "type": "string" }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Obtiene todas las tareas del usuario autenticado.",
+        "tags": ["Tareas"]
+      },
+      "post": {
+        "description": "<br/>Endpoint: /tasks<br/>M\u00e9todo: POST<br/>Datos de entrada (JSON):<br/>    - title: T\u00edtulo de la tarea.<br/>    - description: Descripci\u00f3n de la tarea.<br/>",
+        "parameters": [
+          {
+            "description": "Token de autenticaci\u00f3n (Bearer <token>)",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "description": {
+                  "description": "Descripci\u00f3n de la tarea",
+                  "example": "Descripci\u00f3n de la nueva tarea",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "T\u00edtulo de la tarea",
+                  "example": "Nueva tarea",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Tarea agregada exitosamente.",
+            "schema": {
+              "properties": {
+                "message": {
+                  "example": "Tarea creada con \u00e9xito",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Agrega una nueva tarea para el usuario autenticado.",
+        "tags": ["Tareas"]
+      }
+    },
+    "/tasks/{task_id}": {
+      "delete": {
+        "description": "<br/>Endpoint: /tasks/<int:task_id><br/>M\u00e9todo: DELETE<br/>",
+        "parameters": [
+          {
+            "description": "Token de autenticaci\u00f3n (Bearer <token>)",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ID de la tarea a eliminar.",
+            "in": "path",
+            "name": "task_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tarea eliminada exitosamente.",
+            "schema": {
+              "properties": {
+                "message": {
+                  "example": "Tarea eliminada con \u00e9xito",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Tarea no encontrada.",
+            "schema": {
+              "properties": {
+                "error": { "example": "Tarea no encontrada", "type": "string" }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Elimina una tarea existente del usuario autenticado.",
+        "tags": ["Tareas"]
+      },
+      "put": {
+        "description": "<br/>Endpoint: /tasks/<int:task_id><br/>M\u00e9todo: PUT<br/>Datos de entrada (JSON):<br/>    - title: Nuevo t\u00edtulo de la tarea (opcional).<br/>    - description: Nueva descripci\u00f3n de la tarea (opcional).<br/>    - status: Nuevo estado de la tarea (opcional).<br/>",
+        "parameters": [
+          {
+            "description": "Token de autenticaci\u00f3n (Bearer <token>)",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ID de la tarea a actualizar.",
+            "in": "path",
+            "name": "task_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "properties": {
+                "description": {
+                  "example": "Descripci\u00f3n actualizada",
+                  "type": "string"
+                },
+                "status": { "example": "Por hacer", "type": "string" },
+                "title": {
+                  "example": "T\u00edtulo actualizado",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tarea actualizada exitosamente.",
+            "schema": {
+              "properties": {
+                "message": {
+                  "example": "Tarea actualizada con \u00e9xito",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Tarea no encontrada.",
+            "schema": {
+              "properties": {
+                "error": { "example": "Tarea no encontrada", "type": "string" }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Actualiza una tarea existente del usuario autenticado.",
+        "tags": ["Tareas"]
+      }
+    },
+    "/version": {
+      "get": {
+        "description": "<br/>Endpoint: /version<br/>M\u00e9todo: GET<br/>",
+        "responses": {
+          "200": {
+            "description": "Mensaje de bienvenida.",
+            "schema": {
+              "properties": {
+                "message": { "example": "Version 1.0.0", "type": "string" }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "summary": "Endpoint de prueba para verificar que el servidor est\u00e1 funcionando.",
+        "tags": ["Versi\u00f3n"]
+      }
+    }
+  },
+  "swagger": "2.0"
+}
