@@ -67,9 +67,9 @@ const Dashboard = () => {
         setEditingTask(task);
     };
 
-    const tasksToDo = tasks ? tasks.filter(task => task.status === "Por hacer") : [];
-    const tasksInProgress = tasks ? tasks.filter(task => task.status === "En Curso") : [];
-    const tasksDone = tasks ? tasks.filter(task => task.status === "Finalizado") : [];
+    const tasksToDo = tasks && tasks.filter(task => task.status === "Por hacer");
+    const tasksInProgress = tasks && tasks.filter(task => task.status === "En Curso");
+    const tasksDone = tasks && tasks.filter(task => task.status === "Finalizado");
 
     useEffect(() => {
         if(user){
@@ -82,7 +82,7 @@ const Dashboard = () => {
             <header className="bg-blue-600 w-full py-2 sm:py-4 flex justify-between items-center px-2 sm:px-6 text-white">
                 <div>
                     <h1 className="text-xl sm:text-2xl font-bold">Bienvenido !</h1>
-                    <p>{user?.email}</p>
+                    <p>{user && user.email}</p>
                 </div>
                 <button onClick={logout} className="bg-red-500 px-1 py-1 sm:px-4 sm:py-2 rounded">Logout</button>
             </header>
