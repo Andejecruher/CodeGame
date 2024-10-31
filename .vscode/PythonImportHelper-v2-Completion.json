@@ -1,14 +1,71 @@
 [
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "app.extensions",
         "documentation": {}
     },
     {
-        "label": "redirect",
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "CryptContext",
+        "importPath": "passlib.context",
+        "description": "passlib.context",
+        "isExtraImport": true,
+        "detail": "passlib.context",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -24,6 +81,46 @@
         "documentation": {}
     },
     {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "jsonify",
         "importPath": "flask",
         "description": "flask",
@@ -32,27 +129,11 @@
         "documentation": {}
     },
     {
-        "label": "SQLAlchemy",
-        "importPath": "flask_sqlalchemy",
-        "description": "flask_sqlalchemy",
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
         "isExtraImport": true,
-        "detail": "flask_sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "JWTManager",
-        "importPath": "flask_jwt_extended",
-        "description": "flask_jwt_extended",
-        "isExtraImport": true,
-        "detail": "flask_jwt_extended",
-        "documentation": {}
-    },
-    {
-        "label": "create_access_token",
-        "importPath": "flask_jwt_extended",
-        "description": "flask_jwt_extended",
-        "isExtraImport": true,
-        "detail": "flask_jwt_extended",
+        "detail": "flask",
         "documentation": {}
     },
     {
@@ -72,92 +153,116 @@
         "documentation": {}
     },
     {
-        "label": "Config",
-        "importPath": "config",
-        "description": "config",
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
         "isExtraImport": true,
-        "detail": "config",
+        "detail": "flask_jwt_extended",
         "documentation": {}
     },
     {
-        "label": "CORS",
-        "importPath": "flask_cors",
-        "description": "flask_cors",
+        "label": "JWTManager",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
         "isExtraImport": true,
-        "detail": "flask_cors",
+        "detail": "flask_jwt_extended",
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "routes",
-        "description": "routes",
+        "label": "create_task",
+        "importPath": "app.services.task_services",
+        "description": "app.services.task_services",
         "isExtraImport": true,
-        "detail": "routes",
+        "detail": "app.services.task_services",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
+        "label": "get_tasks",
+        "importPath": "app.services.task_services",
+        "description": "app.services.task_services",
         "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
+        "detail": "app.services.task_services",
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "app",
-        "description": "app",
+        "label": "update_task",
+        "importPath": "app.services.task_services",
+        "description": "app.services.task_services",
         "isExtraImport": true,
-        "detail": "app",
+        "detail": "app.services.task_services",
         "documentation": {}
     },
     {
-        "label": "app",
-        "importPath": "app",
-        "description": "app",
+        "label": "delete_task",
+        "importPath": "app.services.task_services",
+        "description": "app.services.task_services",
         "isExtraImport": true,
-        "detail": "app",
+        "detail": "app.services.task_services",
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "app",
-        "description": "app",
+        "label": "create_user",
+        "importPath": "app.services.user_services",
+        "description": "app.services.user_services",
         "isExtraImport": true,
-        "detail": "app",
+        "detail": "app.services.user_services",
         "documentation": {}
     },
     {
-        "label": "CryptContext",
-        "importPath": "passlib.context",
-        "description": "passlib.context",
+        "label": "access_user",
+        "importPath": "app.services.user_services",
+        "description": "app.services.user_services",
         "isExtraImport": true,
-        "detail": "passlib.context",
-        "documentation": {}
-    },
-    {
-        "label": "CryptContext",
-        "importPath": "passlib.context",
-        "description": "passlib.context",
-        "isExtraImport": true,
-        "detail": "passlib.context",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
+        "detail": "app.services.user_services",
         "documentation": {}
     },
     {
         "label": "Task",
-        "importPath": "models",
-        "description": "models",
+        "importPath": "app.models.task",
+        "description": "app.models.task",
         "isExtraImport": true,
-        "detail": "models",
+        "detail": "app.models.task",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "app.models.user",
+        "description": "app.models.user",
+        "isExtraImport": true,
+        "detail": "app.models.user",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
         "documentation": {}
     },
     {
@@ -186,129 +291,237 @@
         "documentation": {}
     },
     {
-        "label": "app",
-        "kind": 5,
-        "importPath": "backend.app",
-        "description": "backend.app",
-        "peekOfCode": "app = Flask(__name__)\n# Configura CORS para permitir solicitudes desde localhost:3000\nCORS(app, resources={r\"/*\": {\"origins\": \"http://localhost:3000\"}})\n# Configurar la aplicación usando la configuración del objeto Config\napp.config.from_object(Config)\n# Inicializar la base de datos\ntry:\n    db = SQLAlchemy(app)\nexcept Exception as e:\n    # Manejar errores de inicialización de la base de datos",
-        "detail": "backend.app",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
+        "label": "Task",
         "kind": 6,
-        "importPath": "backend.config",
-        "description": "backend.config",
-        "peekOfCode": "class Config:\n    \"\"\"\n    Configuración para la aplicación.\n    Atributos:\n        SQLALCHEMY_DATABASE_URI (str): URI de la base de datos para SQLAlchemy.\n        JWT_SECRET_KEY (str): Clave secreta para la generación de JWT.\n        SQLALCHEMY_TRACK_MODIFICATIONS (bool): Desactiva el seguimiento de modificaciones de objetos para ahorrar memoria.\n    \"\"\"\n    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:secret@localhost/todo_app'\n    JWT_SECRET_KEY = 'your_jwt_secret_key'",
-        "detail": "backend.config",
+        "importPath": "backend.app.models.task",
+        "description": "backend.app.models.task",
+        "peekOfCode": "class Task(db.Model):\n    \"\"\"\n    Modelo de tarea para la base de datos.\n    \"\"\"\n    __tablename__ = \"tasks\"\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.String(6), db.ForeignKey(\"users.id\"), nullable=False)\n    title = db.Column(db.String(255), nullable=False)\n    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)\n    description = db.Column(db.Text, nullable=False)",
+        "detail": "backend.app.models.task",
         "documentation": {}
     },
     {
         "label": "User",
         "kind": 6,
-        "importPath": "backend.models",
-        "description": "backend.models",
+        "importPath": "backend.app.models.user",
+        "description": "backend.app.models.user",
         "peekOfCode": "class User(db.Model):\n    \"\"\"\n    Modelo de usuario para la base de datos.\n    \"\"\"\n    __tablename__ = \"users\"\n    id = db.Column(db.String(6), primary_key=True)\n    email = db.Column(db.String(255), unique=True, nullable=False)\n    password = db.Column(db.String(255), nullable=False)\n    def __init__(self, email, password, id):\n        \"\"\"",
-        "detail": "backend.models",
-        "documentation": {}
-    },
-    {
-        "label": "Task",
-        "kind": 6,
-        "importPath": "backend.models",
-        "description": "backend.models",
-        "peekOfCode": "class Task(db.Model):\n    \"\"\"\n    Modelo de tarea para la base de datos.\n    \"\"\"\n    __tablename__ = \"tasks\"\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.String(6), db.ForeignKey(\"users.id\"), nullable=False)\n    title = db.Column(db.String(255), nullable=False)\n    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)\n    description = db.Column(db.Text, nullable=False)",
-        "detail": "backend.models",
+        "detail": "backend.app.models.user",
         "documentation": {}
     },
     {
         "label": "pwd_context",
         "kind": 5,
-        "importPath": "backend.models",
-        "description": "backend.models",
+        "importPath": "backend.app.models.user",
+        "description": "backend.app.models.user",
         "peekOfCode": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\nclass User(db.Model):\n    \"\"\"\n    Modelo de usuario para la base de datos.\n    \"\"\"\n    __tablename__ = \"users\"\n    id = db.Column(db.String(6), primary_key=True)\n    email = db.Column(db.String(255), unique=True, nullable=False)\n    password = db.Column(db.String(255), nullable=False)\n    def __init__(self, email, password, id):",
-        "detail": "backend.models",
+        "detail": "backend.app.models.user",
         "documentation": {}
     },
     {
-        "label": "register",
+        "label": "list_tasks",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si el registro es exitoso.",
-        "detail": "backend.routes",
-        "documentation": {}
-    },
-    {
-        "label": "login",
-        "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def login():\n    \"\"\"\n    Inicia sesión de un usuario.\n    Endpoint: /login\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si las credenciales son correctas.",
-        "detail": "backend.routes",
-        "documentation": {}
-    },
-    {
-        "label": "get_all_tasks",
-        "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def get_all_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    Retorna:\n        - Una lista de tareas del usuario autenticado.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    user_id = get_jwt_identity()",
-        "detail": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
+        "peekOfCode": "def list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    Retorna:\n        - Una lista de tareas del usuario autenticado.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    user_id = get_jwt_identity()",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
         "label": "add_task",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
         "peekOfCode": "def add_task():\n    \"\"\"\n    Agrega una nueva tarea para el usuario autenticado.\n    Endpoint: /tasks\n    Método: POST\n    Datos de entrada (JSON):\n        - title: Título de la tarea.\n        - description: Descripción de la tarea.\n    Retorna:\n        - Un mensaje de confirmación.",
-        "detail": "backend.routes",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
-        "label": "update_task",
+        "label": "edit_task",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def update_task(task_id):\n    \"\"\"\n    Actualiza una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: PUT\n    Datos de entrada (JSON):\n        - title: Nuevo título de la tarea (opcional).\n        - description: Nueva descripción de la tarea (opcional).\n        - status: Nuevo estado de la tarea (opcional).\n    Retorna:",
-        "detail": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
+        "peekOfCode": "def edit_task(task_id):\n    \"\"\"\n    Actualiza una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: PUT\n    Datos de entrada (JSON):\n        - title: Nuevo título de la tarea (opcional).\n        - description: Nueva descripción de la tarea (opcional).\n        - status: Nuevo estado de la tarea (opcional).\n    Retorna:",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
-        "label": "delete_task",
+        "label": "remove_task",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def delete_task(task_id):\n    \"\"\"\n    Elimina una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: DELETE\n    Retorna:\n        - Un mensaje de confirmación.\n        - Código de estado 200 si la tarea se elimina exitosamente.\n        - Código de estado 404 si la tarea no se encuentra.\n    \"\"\"",
-        "detail": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
+        "peekOfCode": "def remove_task(task_id):\n    \"\"\"\n    Elimina una tarea existente del usuario autenticado.\n    Endpoint: /tasks/<int:task_id>\n    Método: DELETE\n    Retorna:\n        - Un mensaje de confirmación.\n        - Código de estado 200 si la tarea se elimina exitosamente.\n        - Código de estado 404 si la tarea no se encuentra.\n    \"\"\"",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
         "label": "home",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
         "peekOfCode": "def home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return \"Version 0.01\", 200",
-        "detail": "backend.routes",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
         "label": "home_redirect",
         "kind": 2,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return redirect('/version')",
-        "detail": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
+        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return redirect(\"/version\")",
+        "detail": "backend.app.routes.task_routes",
         "documentation": {}
     },
     {
-        "label": "pwd_context",
+        "label": "task_routes",
         "kind": 5,
-        "importPath": "backend.routes",
-        "description": "backend.routes",
-        "peekOfCode": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\n@app.route('/register', methods=['POST'])\ndef register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.",
-        "detail": "backend.routes",
+        "importPath": "backend.app.routes.task_routes",
+        "description": "backend.app.routes.task_routes",
+        "peekOfCode": "task_routes = Blueprint(\"tasks\", __name__)\n@task_routes.route(\"/tasks\", methods=[\"GET\"])\n@jwt_required()\ndef list_tasks():\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Endpoint: /tasks\n    Método: GET\n    Retorna:\n        - Una lista de tareas del usuario autenticado.",
+        "detail": "backend.app.routes.task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "backend.app.routes.user_routes",
+        "description": "backend.app.routes.user_routes",
+        "peekOfCode": "def register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si el registro es exitoso.",
+        "detail": "backend.app.routes.user_routes",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "backend.app.routes.user_routes",
+        "description": "backend.app.routes.user_routes",
+        "peekOfCode": "def login():\n    \"\"\"\n    Inicia sesión de un usuario.\n    Endpoint: /login\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un token de acceso JWT si las credenciales son correctas.",
+        "detail": "backend.app.routes.user_routes",
+        "documentation": {}
+    },
+    {
+        "label": "user_routes",
+        "kind": 5,
+        "importPath": "backend.app.routes.user_routes",
+        "description": "backend.app.routes.user_routes",
+        "peekOfCode": "user_routes = Blueprint(\"users\", __name__)\n@user_routes.route(\"/register\", methods=[\"POST\"])\ndef register():\n    \"\"\"\n    Registra un nuevo usuario.\n    Endpoint: /register\n    Método: POST\n    Datos de entrada (JSON):\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.",
+        "detail": "backend.app.routes.user_routes",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "backend.app.routes.version_routes",
+        "description": "backend.app.routes.version_routes",
+        "peekOfCode": "def home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return \"Version 0.01\", 200",
+        "detail": "backend.app.routes.version_routes",
+        "documentation": {}
+    },
+    {
+        "label": "home_redirect",
+        "kind": 2,
+        "importPath": "backend.app.routes.version_routes",
+        "description": "backend.app.routes.version_routes",
+        "peekOfCode": "def home_redirect():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.\n    \"\"\"\n    return redirect(\"/version\")",
+        "detail": "backend.app.routes.version_routes",
+        "documentation": {}
+    },
+    {
+        "label": "version_routes",
+        "kind": 5,
+        "importPath": "backend.app.routes.version_routes",
+        "description": "backend.app.routes.version_routes",
+        "peekOfCode": "version_routes = Blueprint(\"version\", __name__)\n@version_routes.route(\"/version\", methods=[\"GET\"])\ndef home():\n    \"\"\"\n    Endpoint de prueba para verificar que el servidor está funcionando.\n    Endpoint: /version\n    Método: GET\n    Retorna:\n        - Un mensaje de bienvenida.\n        - Código de estado 200 si la solicitud es exitosa.",
+        "detail": "backend.app.routes.version_routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_tasks",
+        "kind": 2,
+        "importPath": "backend.app.services.task_services",
+        "description": "backend.app.services.task_services",
+        "peekOfCode": "def get_tasks(user_id):\n    \"\"\"\n    Obtiene todas las tareas del usuario autenticado.\n    Retorna:\n        - Una lista de tareas.\n    \"\"\"\n    tasks = Task.query.filter_by(user_id=user_id).all()\n    return jsonify([task.to_dict() for task in tasks]), 200\ndef create_task(data, user_id):\n    \"\"\"",
+        "detail": "backend.app.services.task_services",
+        "documentation": {}
+    },
+    {
+        "label": "create_task",
+        "kind": 2,
+        "importPath": "backend.app.services.task_services",
+        "description": "backend.app.services.task_services",
+        "peekOfCode": "def create_task(data, user_id):\n    \"\"\"\n    Agrega una nueva tarea para el usuario autenticado.\n    Datos de entrada:\n        - title: Título de la tarea.\n        - description: Descripción de la tarea.\n    Retorna:\n        - Un mensaje de confirmación.\n    \"\"\"\n    new_task = Task(",
+        "detail": "backend.app.services.task_services",
+        "documentation": {}
+    },
+    {
+        "label": "update_task",
+        "kind": 2,
+        "importPath": "backend.app.services.task_services",
+        "description": "backend.app.services.task_services",
+        "peekOfCode": "def update_task(data, user_id, task_id):\n    \"\"\"\n    Actualiza una tarea existente del usuario autenticado.\n    Datos de entrada:\n        - title: Nuevo título de la tarea (opcional).\n        - description: Nueva descripción de la tarea (opcional).\n        - status: Nuevo estado de la tarea (opcional).\n    Retorna:\n        - Un mensaje de confirmación.\n    \"\"\"",
+        "detail": "backend.app.services.task_services",
+        "documentation": {}
+    },
+    {
+        "label": "delete_task",
+        "kind": 2,
+        "importPath": "backend.app.services.task_services",
+        "description": "backend.app.services.task_services",
+        "peekOfCode": "def delete_task(user_id, task_id):\n    \"\"\"\n    Elimina una tarea existente del usuario autenticado.\n    Retorna:\n        - Un mensaje de confirmación.\n    \"\"\"\n    task = Task.query.filter_by(id=task_id, user_id=user_id).first()\n    if task:\n        db.session.delete(task)\n        db.session.commit()",
+        "detail": "backend.app.services.task_services",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "backend.app.services.user_services",
+        "description": "backend.app.services.user_services",
+        "peekOfCode": "def create_user(data):\n    \"\"\"\n    Registra un nuevo usuario.\n    Datos de entrada:\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un mensaje de confirmación.\n    \"\"\"\n    new_user = User(email=data[\"email\"], password=data[\"password\"], id=f'U{str(db.session.query(User).count() + 1).zfill(4)}')",
+        "detail": "backend.app.services.user_services",
+        "documentation": {}
+    },
+    {
+        "label": "access_user",
+        "kind": 2,
+        "importPath": "backend.app.services.user_services",
+        "description": "backend.app.services.user_services",
+        "peekOfCode": "def access_user(data):\n    \"\"\"\n    Inicia sesión de un usuario.\n    Datos de entrada:\n        - email: Dirección de correo electrónico del usuario.\n        - password: Contraseña del usuario.\n    Retorna:\n        - Un mensaje de confirmación.\n    \"\"\"\n    user = User.query.filter_by(email=data[\"email\"]).first()",
+        "detail": "backend.app.services.user_services",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "backend.app.config",
+        "description": "backend.app.config",
+        "peekOfCode": "class Config:\n    \"\"\"\n    Configuración para la aplicación.\n    Atributos:\n        SQLALCHEMY_DATABASE_URI (str): URI de la base de datos para SQLAlchemy.\n        JWT_SECRET_KEY (str): Clave secreta para la generación de JWT.\n        SQLALCHEMY_TRACK_MODIFICATIONS (bool): Desactiva el seguimiento de modificaciones de objetos para ahorrar memoria.\n    \"\"\"\n    SQLALCHEMY_DATABASE_URI = f\"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@localhost/{os.getenv('DB_NAME')}\"\n    JWT_SECRET_KEY = os.getenv(\"JWT_SECRET\")",
+        "detail": "backend.app.config",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "backend.app.extensions",
+        "description": "backend.app.extensions",
+        "peekOfCode": "db = SQLAlchemy()\njwt = JWTManager()",
+        "detail": "backend.app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 5,
+        "importPath": "backend.app.extensions",
+        "description": "backend.app.extensions",
+        "peekOfCode": "jwt = JWTManager()",
+        "detail": "backend.app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.wsgi",
+        "description": "backend.wsgi",
+        "peekOfCode": "app = create_app()\nif __name__ == \"__main__\":\n    app.run()",
+        "detail": "backend.wsgi",
         "documentation": {}
     },
     {
