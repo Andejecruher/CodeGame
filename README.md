@@ -8,91 +8,59 @@ Prueba técnica para aplicación a vacante en CodeGame
 
 - Python: Descárgalo de [python.org](https://python.org).
 - MariaDB: Descárgalo desde [mariadb.org](https://mariadb.org).
-- Node.js: Descárgalo de [nodejs.org](https://nodejs.org). en su versión v21.6.1.
-- npm: Se instala automáticamente con Node.js.
 
-# Crear un entorno virtual para Python:
+## Instalación de Backend
+1. Clona el repositorio:
+  ```bash
+  git clone https://github.com/Andejecruher/CodeGame.git
+  ```
+2. Navega al directorio del proyecto:
+  ```bash
+  cd CodeGame/backend
+  ```
+3. Ejecuta el siguiente comando para crear el entorno virtual:
 
-Abre una terminal o línea de comandos y navega a la carpeta donde quieres crear el proyecto.
+  ```bash
+  python -m venv todo_env
+  ```
 
-Has un clon del repositorio con el siguiente comando:
+  Activa el entorno virtual:
 
-```bash
-git clone https://github.com/Andejecruher/CodeGame.git
-```
-Accede a la carpeta del proyecto:
-
-```bash
-cd CodeGame
-```
-
-Luego sigue los pasos necesarios para levantar tanto el servicio de backend como el de frontend.
-
-
-Primero accede a la carpeta del backend:
-
-```bash
-cd backend
-```
-Ejecuta el siguiente comando para crear el entorno virtual:
-
-```bash
-python -m venv todo_env
-```
-
-Activa el entorno virtual:
-
- - En Windows: 
- ```bash
- todo_env\Scripts\activate
- ```
- - En Mac o Linux: 
- ```bash
- source todo_env/bin/activate
- ```
-
-#Instalar dependencias de Python:
-
-- Instalar Flask y Flask-JWT-Extended para el backend con pip install Flask Flask-JWT-Extended Flask-SQLAlchemy pymysql passlib flask-cors
-
-```bash
-pip install Flask Flask-JWT-Extended Flask-SQLAlchemy pymysql passlib flask-cors
-```
-
-# Crear la base de datos:
-
-- Corre el script de la carpeta DB para crear la base de datos y la tabla necesaria.
-
-```bash
-mysql -u root -p < db.sql
-```
-- Recuerda cambiar los datos de conexión por los tuyos
+  - En Windows: 
+  ```bash
+  todo_env\Scripts\activate
+  ```
+  - En Mac o Linux: 
+  
+  ```bash
+  source todo_env/bin/activate
+  ```
+4. Instala las dependencias:
+  ```bash
+  pip install -r requirements.txt
+  ```
+5. Configura las variables de entorno:
+  ```bash
+  cp .env.example .env
+  ```
+  - Cambia los valores de las variables de entorno por los tuyos
+  
+6. crea la base de datos:
+  ```bash
+  mysql -u root -p < db.sql
+  ```
+  - Recuerda cambiar los datos de conexión por los tuyos
+  
+7. Corre el servidor:
+  ```bash
+  flask run
+  ```
 
 
-# Correr el servidor:
-
-- Antes de correr el servidor, asegurate de colocar las credenciales de la base de datos en el archivo config.py
-
-```python
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://<usuario>:<contraseña>@localhost/<nombre de la base de datos>'
-JWT_SECRET_KEY = 'clave secreta'
-```
-
-
-- instala guicorn con pip install gunicorn
-
-```bash
-pip install gunicorn
-```
-
-- Corre el servidor con el siguiente comando:
-
-```bash
-gunicorn -w 4 -b 0.0.0.0:8000 app:app --reload
-```
-
-- Recuerda correr los comandos dentro de la carpeta backend a la altura de el archivo app.py para que funcione correctamente.
-
+- Abre [http://localhost:5000](http://localhost:5000) en tu navegador para ver la aplicación o visualiza el puerto asignado por tu servidor en la terminal.
+- Listo, ya puedes empezar a usar la aplicación.
+- Para detener el servidor, presiona `Ctrl + C` en la terminal.
+  
 # Documentacion oficial:
 
 - [Flask](https://flask.palletsprojects.com/en/stable/)
@@ -103,7 +71,6 @@ gunicorn -w 4 -b 0.0.0.0:8000 app:app --reload
 - [Passlib](https://passlib.readthedocs.io/en/stable/)
 - [Gunicorn](https://gunicorn.org/)
 - [MariaDB](https://mariadb.org/)
-
 
 
 ## Requerimientos previos para Frontend
@@ -130,7 +97,7 @@ npm install
 npm run dev
 ```
 
-- Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+- Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación o verifica el puerto asignado por tu servidor en la terminal.
 
 - Listo, ya puedes empezar a usar la aplicación.
 
@@ -183,3 +150,4 @@ CodeGame/
 ├── .gitignore
 └── README.md
 ```
+[Enlace al proyecto en GitHub](https://github.com/Andejecruher/CodeGame)
