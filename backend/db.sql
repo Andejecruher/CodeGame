@@ -1,3 +1,6 @@
+-- crear base de datos de test
+CREATE DATABASE todo_app_test;
+
 -- Crear la base de datos
 CREATE DATABASE todo_app;
 USE todo_app;

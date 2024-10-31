@@ -611,7 +611,7 @@
         "kind": 2,
         "importPath": "backend.test.test_task_routes",
         "description": "backend.test.test_task_routes",
-        "peekOfCode": "def test_list_tasks(test_client):\n    \"\"\"\n    Prueba para el endpoint de listar tareas.\n    \"\"\"\n    # Primero, registrar e iniciar sesión con un usuario\n    test_client.post('/register', json={\n        'email': 'testtask@example.com',\n        'password': 'password123'\n    })\n    login_response = test_client.post('/login', json={",
+        "peekOfCode": "def test_list_tasks(test_client):\n    \"\"\"\n    Prueba para el endpoint de listar tareas.\n    \"\"\"\n    login_response = test_client.post('/login', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    token = json.loads(login_response.data)['access_token']\n    # Luego, listar las tareas del usuario autenticado",
         "detail": "backend.test.test_task_routes",
         "documentation": {}
     },
@@ -620,7 +620,7 @@
         "kind": 2,
         "importPath": "backend.test.test_task_routes",
         "description": "backend.test.test_task_routes",
-        "peekOfCode": "def test_create_task(test_client):\n    \"\"\"\n    Prueba para el endpoint de crear tarea.\n    \"\"\"\n    # Primero, registrar e iniciar sesión con un usuario\n    test_client.post('/register', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    login_response = test_client.post('/login', json={",
+        "peekOfCode": "def test_create_task(test_client):\n    \"\"\"\n    Prueba para el endpoint de crear tarea.\n    \"\"\"\n    login_response = test_client.post('/login', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    token = json.loads(login_response.data)['access_token']\n    # Luego, crear una tarea para el usuario autenticado",
         "detail": "backend.test.test_task_routes",
         "documentation": {}
     },
@@ -638,7 +638,7 @@
         "kind": 2,
         "importPath": "backend.test.test_user_routes",
         "description": "backend.test.test_user_routes",
-        "peekOfCode": "def test_login(test_client):\n    \"\"\"\n    Prueba para el endpoint de inicio de sesión.\n    \"\"\"\n    # Primero, registrar un usuario\n    test_client.post('/register', json={\n        'email': 'test@gmail.com',\n        'password': 'secret'\n    })\n    # Luego, iniciar sesión con el usuario registrado",
+        "peekOfCode": "def test_login(test_client):\n    \"\"\"\n    Prueba para el endpoint de inicio de sesión.\n    \"\"\"\n    # Luego, iniciar sesión con el usuario registrado\n    response = test_client.post('/login', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    data = json.loads(response.data)",
         "detail": "backend.test.test_user_routes",
         "documentation": {}
     },

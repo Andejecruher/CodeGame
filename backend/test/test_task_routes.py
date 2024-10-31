@@ -1,17 +1,14 @@
 # tests/test_task_routes.py
 import json
+import pytest
 
+@pytest.mark.run(order=3)
 def test_list_tasks(test_client):
     """
     Prueba para el endpoint de listar tareas.
     """
-    # Primero, registrar e iniciar sesión con un usuario
-    test_client.post('/register', json={
-        'email': 'testtask@example.com',
-        'password': 'password123'
-    })
     login_response = test_client.post('/login', json={
-        'email': 'testtask@example.com',
+        'email': 'test@example.com',
         'password': 'password123'
     })
     token = json.loads(login_response.data)['access_token']
@@ -22,15 +19,11 @@ def test_list_tasks(test_client):
     })
     assert response.status_code == 200
 
+@pytest.mark.run(order=4)
 def test_create_task(test_client):
     """
     Prueba para el endpoint de crear tarea.
     """
-    # Primero, registrar e iniciar sesión con un usuario
-    test_client.post('/register', json={
-        'email': 'test@example.com',
-        'password': 'password123'
-    })
     login_response = test_client.post('/login', json={
         'email': 'test@example.com',
         'password': 'password123'
