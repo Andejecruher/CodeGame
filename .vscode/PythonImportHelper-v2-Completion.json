@@ -32,6 +32,14 @@
         "documentation": {}
     },
     {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -306,6 +314,32 @@
         "documentation": {}
     },
     {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "create_app",
         "importPath": "app",
         "description": "app",
@@ -541,7 +575,7 @@
         "kind": 6,
         "importPath": "backend.app.config",
         "description": "backend.app.config",
-        "peekOfCode": "class Config:\n    \"\"\"\n    Configuración para la aplicación.\n    Atributos:\n        SQLALCHEMY_DATABASE_URI (str): URI de la base de datos para SQLAlchemy.\n        JWT_SECRET_KEY (str): Clave secreta para la generación de JWT.\n        SQLALCHEMY_TRACK_MODIFICATIONS (bool): Desactiva el seguimiento de modificaciones de objetos para ahorrar memoria.\n    \"\"\"\n    SQLALCHEMY_DATABASE_URI = f\"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@localhost/{os.getenv('DB_NAME')}\"\n    JWT_SECRET_KEY = os.getenv(\"JWT_SECRET\")",
+        "peekOfCode": "class Config:\n    \"\"\"\n    Configuración para la aplicación.\n    Atributos:\n        SQLALCHEMY_DATABASE_URI (str): URI de la base de datos para SQLAlchemy.\n        JWT_SECRET_KEY (str): Clave secreta para la generación de JWT.\n        SQLALCHEMY_TRACK_MODIFICATIONS (bool): Desactiva el seguimiento de modificaciones de objetos para ahorrar memoria.\n    \"\"\"\n    SQLALCHEMY_DATABASE_URI = f\"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@localhost/{os.getenv('DB_NAME_TEST')}\"\n    JWT_SECRET_KEY = os.getenv(\"JWT_SECRET\")",
         "detail": "backend.app.config",
         "documentation": {}
     },
@@ -561,6 +595,51 @@
         "description": "backend.app.extensions",
         "peekOfCode": "jwt = JWTManager()",
         "detail": "backend.app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "test_client",
+        "kind": 2,
+        "importPath": "backend.test.conftest",
+        "description": "backend.test.conftest",
+        "peekOfCode": "def test_client():\n    # Crear la app en modo de pruebas\n    flask_app = create_app()  # Configura la app para pruebas\n    # Crear un contexto de aplicación\n    with flask_app.app_context():\n        # Crear todas las tablas en la base de datos de pruebas\n        db.create_all()\n        # Crear y devolver un cliente de pruebas\n        testing_client = flask_app.test_client()\n        yield testing_client  # Cliente que se usará en los tests",
+        "detail": "backend.test.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_list_tasks",
+        "kind": 2,
+        "importPath": "backend.test.test_task_routes",
+        "description": "backend.test.test_task_routes",
+        "peekOfCode": "def test_list_tasks(test_client):\n    \"\"\"\n    Prueba para el endpoint de listar tareas.\n    \"\"\"\n    # Primero, registrar e iniciar sesión con un usuario\n    test_client.post('/register', json={\n        'email': 'testtask@example.com',\n        'password': 'password123'\n    })\n    login_response = test_client.post('/login', json={",
+        "detail": "backend.test.test_task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "test_create_task",
+        "kind": 2,
+        "importPath": "backend.test.test_task_routes",
+        "description": "backend.test.test_task_routes",
+        "peekOfCode": "def test_create_task(test_client):\n    \"\"\"\n    Prueba para el endpoint de crear tarea.\n    \"\"\"\n    # Primero, registrar e iniciar sesión con un usuario\n    test_client.post('/register', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    login_response = test_client.post('/login', json={",
+        "detail": "backend.test.test_task_routes",
+        "documentation": {}
+    },
+    {
+        "label": "test_register",
+        "kind": 2,
+        "importPath": "backend.test.test_user_routes",
+        "description": "backend.test.test_user_routes",
+        "peekOfCode": "def test_register(test_client):\n    \"\"\"\n    Prueba para el endpoint de registro de usuario.\n    \"\"\"\n    response = test_client.post('/register', json={\n        'email': 'test@example.com',\n        'password': 'password123'\n    })\n    data = json.loads(response.data)\n    assert response.status_code == 200",
+        "detail": "backend.test.test_user_routes",
+        "documentation": {}
+    },
+    {
+        "label": "test_login",
+        "kind": 2,
+        "importPath": "backend.test.test_user_routes",
+        "description": "backend.test.test_user_routes",
+        "peekOfCode": "def test_login(test_client):\n    \"\"\"\n    Prueba para el endpoint de inicio de sesión.\n    \"\"\"\n    # Primero, registrar un usuario\n    test_client.post('/register', json={\n        'email': 'test@gmail.com',\n        'password': 'secret'\n    })\n    # Luego, iniciar sesión con el usuario registrado",
+        "detail": "backend.test.test_user_routes",
         "documentation": {}
     },
     {
